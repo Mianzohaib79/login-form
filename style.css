@@ -5,14 +5,54 @@
     font-family: "Segoe UI", sans-serif;
 }
 
+/* Light Mode */
 body {
     height: 100vh;
     background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.4s;
 }
 
+/* Toggle Switch */
+.toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle label {
+    width: 50px;
+    height: 25px;
+    background: #fff;
+    display: block;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggle label::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: #667eea;
+    position: absolute;
+    top: 2.5px;
+    left: 3px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle input:checked+label::before {
+    left: 27px;
+}
+
+/* Login Card */
 .login-container {
     width: 100%;
     max-width: 400px;
@@ -25,17 +65,10 @@ body {
     border-radius: 12px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     text-align: center;
+    transition: 0.4s;
 }
 
-.login-form h2 {
-    margin-bottom: 5px;
-}
-
-.login-form p {
-    color: #777;
-    margin-bottom: 25px;
-}
-
+/* Inputs */
 .input-group {
     position: relative;
     margin-bottom: 25px;
@@ -48,6 +81,8 @@ body {
     border-radius: 6px;
     outline: none;
     font-size: 16px;
+    background: transparent;
+    color: #000;
 }
 
 .input-group label {
@@ -57,9 +92,8 @@ body {
     color: #999;
     font-size: 14px;
     transform: translateY(-50%);
-    pointer-events: none;
     transition: 0.3s;
-    background: #fff;
+    background: inherit;
     padding: 0 5px;
 }
 
@@ -70,6 +104,7 @@ body {
     color: #667eea;
 }
 
+/* Button */
 button {
     width: 100%;
     padding: 12px;
@@ -79,16 +114,10 @@ button {
     font-size: 16px;
     border-radius: 6px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #5563c1;
 }
 
 .extra {
     margin-top: 15px;
-    font-size: 14px;
 }
 
 .extra a {
@@ -96,6 +125,29 @@ button:hover {
     text-decoration: none;
 }
 
-.extra a:hover {
-    text-decoration: underline;
+/* 🌙 DARK MODE */
+#darkToggle:checked~.login-container .login-form {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+#darkToggle:checked~.login-container .input-group input {
+    border-color: #444;
+    color: #fff;
+}
+
+#darkToggle:checked~.login-container .input-group label {
+    color: #aaa;
+}
+
+#darkToggle:checked~.login-container button {
+    background: #764ba2;
+}
+
+#darkToggle:checked~.login-container .extra a {
+    color: #bbb;
+}
+
+#darkToggle:checked~body {
+    background: linear-gradient(135deg, #141e30, #243b55);
 }
